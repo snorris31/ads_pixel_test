@@ -1,23 +1,247 @@
 <!doctype html>
 <html>
 <head>
-  <title>Reddit Pixel Test</title>
+  <meta charset="utf-8" />
+  <title>Catalog Ad Pixel Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <!-- Reddit Pixel -->
 <script>
 !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j792wdg9r16x",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_j792wdg9r16x');rdt('track', 'PageVisit');
 </script>
 <!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
 <!-- End Reddit Pixel -->
-  <!-- Paste Reddit Pixel base code here -->
-  <!-- Reddit says the base code initializes the pixel and fires PageVisit by default. -->
-</head>
-<body>
-  <h1>Reddit Pixel Test Page</h1>
 
-  <button onclick="rdt('track', 'SignUp')">Fire SignUp</button>
-  <button onclick="rdt('track', 'Lead')">Fire Lead</button>
-  <button onclick="rdt('track', 'Purchase', {currency: 'USD', value: 9.99})">
-    Fire Purchase
-  </button>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eaeded;
+      color: #111;
+    }
+
+    header {
+      background: #131921;
+      color: white;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .search {
+      flex: 1;
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      font-size: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #ffd814, #f3a847);
+      padding: 36px 24px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 6px;
+      padding: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.12);
+    }
+
+    .img {
+      height: 150px;
+      background: #f4f4f4;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 54px;
+      margin-bottom: 14px;
+    }
+
+    .title {
+      font-weight: bold;
+      min-height: 42px;
+    }
+
+    .rating {
+      color: #f0a500;
+      margin: 8px 0;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    .prime {
+      color: #007185;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      margin-top: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .view {
+      background: #ffd814;
+    }
+
+    .cart {
+      background: #ffa41c;
+    }
+
+    .buy {
+      background: #ff9900;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">ShopTest</div>
+    <input class="search" placeholder="Search products" />
+    <div>Cart 🛒</div>
+  </header>
+
+  <section class="hero">
+    <h1>Deals inspired by your browsing</h1>
+    <p>Catalog-style Reddit Pixel test page</p>
+  </section>
+
+  <main class="grid" id="catalog"></main>
+
+  <script>
+    const products = [
+      {
+        id: "sku_echo_001",
+        name: "Smart Home Speaker",
+        emoji: "🔊",
+        price: 49.99,
+        category: "Electronics"
+      },
+      {
+        id: "sku_headphones_002",
+        name: "Wireless Noise-Canceling Headphones",
+        emoji: "🎧",
+        price: 89.99,
+        category: "Electronics"
+      },
+      {
+        id: "sku_mug_003",
+        name: "Insulated Travel Mug",
+        emoji: "☕",
+        price: 19.99,
+        category: "Home"
+      },
+      {
+        id: "sku_keyboard_004",
+        name: "Mechanical Keyboard",
+        emoji: "⌨️",
+        price: 74.99,
+        category: "Computers"
+      },
+      {
+        id: "sku_backpack_005",
+        name: "Everyday Laptop Backpack",
+        emoji: "🎒",
+        price: 39.99,
+        category: "Travel"
+      },
+      {
+        id: "sku_watch_006",
+        name: "Fitness Smartwatch",
+        emoji: "⌚",
+        price: 129.99,
+        category: "Wearables"
+      }
+    ];
+
+    function trackReddit(eventName, product) {
+      console.log("Reddit Pixel Event:", eventName, product);
+
+      if (typeof rdt === "function") {
+        rdt("track", eventName, {
+          item_count: 1,
+          value: product.price,
+          currency: "USD",
+          products: [
+            {
+              id: product.id,
+              name: product.name,
+              category: product.category,
+              price: product.price
+            }
+          ]
+        });
+      } else {
+        console.warn("rdt() not found. Paste Reddit Pixel base code in <head>.");
+      }
+    }
+
+    const catalog = document.getElementById("catalog");
+
+    products.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <div class="img">${product.emoji}</div>
+        <div class="title">${product.name}</div>
+        <div class="rating">★★★★☆ 4.4</div>
+        <div class="price">$${product.price.toFixed(2)}</div>
+        <div class="prime">Fast free delivery</div>
+        <button class="view">View Product</button>
+        <button class="cart">Add to Cart</button>
+        <button class="buy">Buy Now</button>
+      `;
+
+      card.querySelector(".view").onclick = () => {
+        trackReddit("ViewContent", product);
+      };
+
+      card.querySelector(".cart").onclick = () => {
+        trackReddit("AddToCart", product);
+      };
+
+      card.querySelector(".buy").onclick = () => {
+        trackReddit("Purchase", product);
+      };
+
+      catalog.appendChild(card);
+    });
+  </script>
 </body>
 </html>
