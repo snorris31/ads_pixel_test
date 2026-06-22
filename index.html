@@ -190,26 +190,33 @@
     ];
 
     function trackReddit(eventName, product) {
-      console.log("Reddit Pixel Event:", eventName, product);
-
-      if (typeof rdt === "function") {
-        rdt("track", eventName, {
-          item_count: 1,
-          value: product.price,
-          currency: "USD",
-          products: [
-            {
-              id: product.id,
-              name: product.name,
-              category: product.category,
-              price: product.price
-            }
-          ]
-        });
-      } else {
-        console.warn("rdt() not found. Paste Reddit Pixel base code in <head>.");
+  const productMetadata = {
+    products: [
+      {
+        id: product.id,
+        name: product.name,
+        category: product.category,
+        price: product.price
       }
-    }
+    ]
+  };
+
+  const revenueMetadata = {
+    ...productMetadata,
+    item_count: 1,
+    value: product.price,
+    currency: "USD"
+  };
+
+  const metadata =
+    eventName === "ViewContent"
+      ? productMetadata
+      : revenueMetadata;
+
+  if (typeof rdt === "function") {
+    rdt("track", eventName, metadata);
+  }
+}
 
     const catalog = document.getElementById("catalog");
 
