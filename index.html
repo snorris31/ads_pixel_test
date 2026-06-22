@@ -5,127 +5,31 @@
   <title>Catalog Ad Pixel Test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!-- Reddit Pixel -->
-<script>
-!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j792wdg9r16x",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_j792wdg9r16x');rdt('track', 'PageVisit');
-</script>
-<!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
-<!-- End Reddit Pixel -->
+  <!-- Reddit Pixel -->
+  <script>
+  !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j792wdg9r16x",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_j792wdg9r16x');rdt('track', 'PageVisit');
+  </script>
+  <!-- End Reddit Pixel -->
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #eaeded;
-      color: #111;
-    }
-
-    header {
-      background: #131921;
-      color: white;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .search {
-      flex: 1;
-      padding: 10px;
-      border-radius: 4px;
-      border: none;
-      font-size: 15px;
-    }
-
-    .hero {
-      background: linear-gradient(120deg, #ffd814, #f3a847);
-      padding: 36px 24px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-
-    .hero p {
-      margin: 10px 0 0;
-      font-size: 18px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      padding: 24px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 6px;
-      padding: 16px;
-      box-shadow: 0 1px 4px rgba(0,0,0,.12);
-    }
-
-    .img {
-      height: 150px;
-      background: #f4f4f4;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 54px;
-      margin-bottom: 14px;
-    }
-
-    .title {
-      font-weight: bold;
-      min-height: 42px;
-    }
-
-    .rating {
-      color: #f0a500;
-      margin: 8px 0;
-    }
-
-    .price {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 8px 0;
-    }
-
-    .prime {
-      color: #007185;
-      font-size: 13px;
-      margin-bottom: 12px;
-    }
-
-    button {
-      width: 100%;
-      border: none;
-      border-radius: 20px;
-      padding: 10px;
-      margin-top: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .view {
-      background: #ffd814;
-    }
-
-    .cart {
-      background: #ffa41c;
-    }
-
-    .buy {
-      background: #ff9900;
-    }
+    body { margin: 0; font-family: Arial, sans-serif; background: #eaeded; color: #111; }
+    header { background: #131921; color: white; padding: 14px 24px; display: flex; align-items: center; gap: 20px; }
+    .logo { font-size: 22px; font-weight: bold; }
+    .search { flex: 1; padding: 10px; border-radius: 4px; border: none; font-size: 15px; }
+    .hero { background: linear-gradient(120deg, #ffd814, #f3a847); padding: 36px 24px; text-align: center; }
+    .hero h1 { margin: 0; font-size: 32px; }
+    .hero p { margin: 10px 0 0; font-size: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; padding: 24px; }
+    .card { background: white; border-radius: 6px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+    .product-img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #f4f4f4; border-radius: 4px; margin-bottom: 14px; }
+    .title { font-weight: bold; min-height: 42px; }
+    .rating { color: #f0a500; margin: 8px 0; }
+    .price { font-size: 22px; font-weight: bold; margin: 8px 0; }
+    .prime { color: #007185; font-size: 13px; margin-bottom: 12px; }
+    button { width: 100%; border: none; border-radius: 20px; padding: 10px; margin-top: 8px; cursor: pointer; font-weight: bold; }
+    .view { background: #ffd814; }
+    .cart { background: #ffa41c; }
+    .buy { background: #ff9900; }
   </style>
 </head>
 
@@ -148,107 +52,128 @@
       {
         id: "sku_echo_001",
         name: "Smart Home Speaker",
-        emoji: "🔊",
+        image: "/speaker.jpg",
         price: 49.99,
         category: "Electronics"
       },
       {
         id: "sku_headphones_002",
         name: "Wireless Noise-Canceling Headphones",
-        emoji: "🎧",
+        image: "/headphones.jpg",
         price: 89.99,
         category: "Electronics"
       },
       {
         id: "sku_mug_003",
         name: "Insulated Travel Mug",
-        emoji: "☕",
+        image: "/mug.jpg",
         price: 19.99,
         category: "Home"
       },
       {
         id: "sku_keyboard_004",
         name: "Mechanical Keyboard",
-        emoji: "⌨️",
+        image: "/keyboard.jpg",
         price: 74.99,
         category: "Computers"
       },
       {
         id: "sku_backpack_005",
         name: "Everyday Laptop Backpack",
-        emoji: "🎒",
+        image: "/backpack.jpg",
         price: 39.99,
         category: "Travel"
       },
       {
         id: "sku_watch_006",
         name: "Fitness Smartwatch",
-        emoji: "⌚",
+        image: "/smartwatch.jpg",
         price: 129.99,
         category: "Wearables"
       }
     ];
 
     function trackReddit(eventName, product) {
-  const productMetadata = {
-    products: [
-      {
-        id: product.id,
-        name: product.name,
-        category: product.category,
-        price: product.price
+      const productMetadata = {
+        products: [
+          {
+            id: product.id,
+            name: product.name,
+            category: product.category
+          }
+        ]
+      };
+
+      const revenueMetadata = {
+        ...productMetadata,
+        item_count: 1,
+        value: product.price,
+        currency: "USD"
+      };
+
+      const metadata =
+        eventName === "ViewContent"
+          ? productMetadata
+          : revenueMetadata;
+
+      console.log("Reddit Pixel Event:", eventName, metadata);
+
+      if (typeof rdt === "function") {
+        rdt("track", eventName, metadata);
       }
-    ]
-  };
+    }
 
-  const revenueMetadata = {
-    ...productMetadata,
-    item_count: 1,
-    value: product.price,
-    currency: "USD"
-  };
+    function productUrl(product) {
+      return "/?product_id=" + encodeURIComponent(product.id);
+    }
 
-  const metadata =
-    eventName === "ViewContent"
-      ? productMetadata
-      : revenueMetadata;
+    function renderProducts(productList) {
+      const catalog = document.getElementById("catalog");
+      catalog.innerHTML = "";
 
-  if (typeof rdt === "function") {
-    rdt("track", eventName, metadata);
-  }
-}
+      productList.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "card";
 
-    const catalog = document.getElementById("catalog");
+        card.innerHTML = `
+          <a href="${productUrl(product)}">
+            <img class="product-img" src="${product.image}" alt="${product.name}">
+          </a>
+          <div class="title">${product.name}</div>
+          <div class="rating">★★★★☆ 4.4</div>
+          <div class="price">$${product.price.toFixed(2)}</div>
+          <div class="prime">Fast free delivery</div>
+          <button class="view">View Product</button>
+          <button class="cart">Add to Cart</button>
+          <button class="buy">Buy Now</button>
+        `;
 
-    products.forEach(product => {
-      const card = document.createElement("div");
-      card.className = "card";
+        card.querySelector(".view").onclick = () => {
+          window.location.href = productUrl(product);
+        };
 
-      card.innerHTML = `
-        <div class="img">${product.emoji}</div>
-        <div class="title">${product.name}</div>
-        <div class="rating">★★★★☆ 4.4</div>
-        <div class="price">$${product.price.toFixed(2)}</div>
-        <div class="prime">Fast free delivery</div>
-        <button class="view">View Product</button>
-        <button class="cart">Add to Cart</button>
-        <button class="buy">Buy Now</button>
-      `;
+        card.querySelector(".cart").onclick = () => {
+          trackReddit("AddToCart", product);
+        };
 
-      card.querySelector(".view").onclick = () => {
-        trackReddit("ViewContent", product);
-      };
+        card.querySelector(".buy").onclick = () => {
+          trackReddit("Purchase", product);
+        };
 
-      card.querySelector(".cart").onclick = () => {
-        trackReddit("AddToCart", product);
-      };
+        catalog.appendChild(card);
+      });
+    }
 
-      card.querySelector(".buy").onclick = () => {
-        trackReddit("Purchase", product);
-      };
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("product_id");
+    const selectedProduct = products.find(product => product.id === productId);
 
-      catalog.appendChild(card);
-    });
+    if (selectedProduct) {
+      renderProducts([selectedProduct]);
+      trackReddit("ViewContent", selectedProduct);
+    } else {
+      renderProducts(products);
+    }
   </script>
 </body>
 </html>
